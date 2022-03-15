@@ -9,9 +9,9 @@ Spring boot 와 REST API 를 활용하여 CRUD 를 설계 및 Docker 와 AWS 로
 ---
 
 **Request Mapping**
-- 회원목록 /users
-- 회원가입 /users/join
-- 회원상세 /users/{id}
-- 회원수정 /users/{id}/edit
-- 회원탈퇴 /users/{id}
+- 글목록 /posts
+- 글작성 /posts/write
+- 글상세 /posts/{id}
+- 글수정 /posts/{id}/edit
+- 글삭제 /posts/{id}
 

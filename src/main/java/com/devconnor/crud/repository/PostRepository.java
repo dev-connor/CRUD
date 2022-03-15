@@ -1,9 +1,9 @@
 package com.devconnor.crud.repository;
 
-import com.devconnor.crud.domain.User;
+import com.devconnor.crud.domain.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface PostRepository extends JpaRepository<Post, Integer> {
 }
