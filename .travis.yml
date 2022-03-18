@@ -13,17 +13,17 @@ script:
   - ./mvnw test -B
 
 after_success:
-  - docker build -t devconnor/spring-boot .
+  - docker build -t devconnor/guest_book .
   - echo "$DOCKER_PWD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push devconnor/spring-boot
+  - docker push devconnor/guest_book
 
 deploy:
   provider: elasticbeanstalk
   region: "ap-northeast-2"
-  app: "Hello"
-  env: "Hello-env"
+  app: "Guest_book"
+  env: "Guestbook-env"
   bucket_name: elasticbeanstalk-ap-northeast-2-615258856034
-  bucket_path: "Hello"
+  bucket_path: "Guest_book"
   on:
     branch: main
   access_key_id: $AWS_KEY
