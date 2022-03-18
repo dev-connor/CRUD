@@ -1,0 +1,30 @@
+language: java
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - chmod +x mvnw
+  - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+script:
+  - ./mvnw test -B
+
+after_success:
+  - docker build -t devconnor/spring-boot .
+  - echo "$DOCKER_PWD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push devconnor/spring-boot
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-northeast-2"
+  app: "Hello"
+  env: "Hello-env"
+  bucket_name: elasticbeanstalk-ap-northeast-2-615258856034
+  bucket_path: "Hello"
+  on:
+    branch: main
+  access_key_id: $AWS_KEY
+  secret_access_key: $AWS_SECRET_KEY
