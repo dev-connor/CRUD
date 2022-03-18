@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:oracle:thin:@192.168.0.101:1521:xe
-    username: board
-    password: tiger
-    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:mysql://@${HOST}:${PORT}:${DB}
+    username: ${USERNAME}
+    password: ${PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver

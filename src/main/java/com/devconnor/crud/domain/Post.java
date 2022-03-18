@@ -17,14 +17,14 @@ import java.util.Date;
 @Entity
 public class Post {
 
+//    @GeneratedValue
     @Id
-    @GeneratedValue
     private Integer id;
 
     private String title;
     private String content;
     private String writer;
 
-    @Past
+//    @Past
     private Date postDate;
 }
