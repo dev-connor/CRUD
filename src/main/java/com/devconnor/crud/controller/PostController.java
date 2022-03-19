@@ -53,7 +53,7 @@ public class PostController {
     }
 
     // 글작성
-    @PostMapping("/write")
+    @PostMapping
     public ResponseEntity<Post> writePost(@Valid @RequestBody Post post) {
         Post savedPost = postRepository.save(post);
 
