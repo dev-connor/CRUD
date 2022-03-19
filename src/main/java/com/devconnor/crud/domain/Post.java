@@ -25,6 +25,6 @@ public class Post {
     private String content;
     private String writer;
 
-//    @Past
+    @Past
     private Date postDate;
 }
