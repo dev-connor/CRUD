@@ -5,11 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/guests")
+//@RequestMapping("/guests")
 public class GuestController {
 
-    @GetMapping
-    public void getGuests() {
+    @GetMapping("/")
+    public String getGuests() {
+        return "guests";
     }
 
 }
