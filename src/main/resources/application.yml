@@ -2,6 +2,10 @@ server:
   port: 80
 
 spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
   datasource:
     url: jdbc:mysql://guest-book.cjix2ohrkuio.ap-northeast-2.rds.amazonaws.com:3306/db?autoReconnect=true&serverTimezone=UTC
     username: admin
