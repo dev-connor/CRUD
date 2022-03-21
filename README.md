@@ -6,9 +6,10 @@ Spring boot 와 REST API 를 활용하여 CRUD 를 설계 및 Docker & Travis �
 
 개발인원: 개인
 
-개발기간: 
+개발기간
 - 2022년 3월 14일 ~ 2022년 3월 21일 (일주일)
 
+개발
 - 스프링부트: 2.2.7.RELEASE
 - 빌드도구: Maven
 - 패키징: JAR
@@ -32,14 +33,6 @@ Spring boot 와 REST API 를 활용하여 CRUD 를 설계 및 Docker & Travis �
     - Delete
 ---
 
-**Request Mapping**
-- 글목록 /posts
-- 글작성 /posts/write
-- 글상세 /posts/{id}
-- 글수정 /posts/{id}/edit
-- 글삭제 /posts/{id}
-
-
 <!-- 깃허브 푸시 -->
 ![image](https://user-images.githubusercontent.com/70655507/159131185-fa4d0127-46f0-4d8a-8957-749c30e07233.png)
 
@@ -53,6 +46,8 @@ Spring boot 와 REST API 를 활용하여 CRUD 를 설계 및 Docker & Travis �
 아래는 테스트 로그를 보여주고 있습니다.
 
 깃허브를 푸시하면 Travis 가 .travis.yml 이라는 파일을 읽습니다.
+
+**.travis.yml**
 
 ```yml
 language: java
@@ -88,22 +83,24 @@ deploy:
 ```
 
 Maven 을 설치하고 테스트하고
-
-after_success: 도커허브에 로그인해 푸시합니다.
-
-deploy: AWS 에 배포합니다.
+- after_success: 도커허브에 로그인해 푸시합니다.
+- deploy: AWS 에 배포합니다.
 
 <!-- 테스트 완료 -->
 ![image](https://user-images.githubusercontent.com/70655507/159130138-76a2670d-fe02-4964-8f50-f65edef6cc6c.png)
 
 테스트에 성공하면 초록색, 실패하면 빨강색 화면을 띄웁니다.
 
-왼쪽에 'Running' 창이 비워진 것이 보이고 Run for 2 min 이라는 글자가 보입니다.
+왼쪽에 'Running' 창이 비워진 것이 보이고 
+
+'Run for 2 min' 를 통해 2분동안 테스트했다는 것을 확인할 수 있습니다.
 
 <!-- 도커허브 확인 -->
 ![image](https://user-images.githubusercontent.com/70655507/159130343-a96c4add-81c1-4554-85de-3b6c233c9922.png)
 
-'Last pushed a minute ago' 라는 글자와 함께 도커허브에 잘 푸시된 것이 보입니다.
+도커허브를 확인해보면 'Last pushed a minute ago' 로 잘 푸시된 것이 보입니다.
+
+**Dockerfile**
 
 ```
 FROM openjdk:8-jdk-alpine
@@ -145,7 +142,7 @@ ENTRYPOINT ["java", "-jar", "/app.jar"]
 <!-- AWS 배포 확인 -->
 ![image](https://user-images.githubusercontent.com/70655507/159130510-08c4474d-ae42-43a5-9cd9-e0965e004766.png)
 
-상태가 확인이 된 것이 보이며 
+AWS 를 확인해보면 상태가 확인이 된 것이 보이며 
 - 실행버전: Travis
 - 플랫폼: docker 
 
@@ -156,12 +153,22 @@ ENTRYPOINT ["java", "-jar", "/app.jar"]
 <!-- MySQL 워크벤치 -->
 ![image](https://user-images.githubusercontent.com/70655507/159130558-a6ed727c-4b66-4cf1-a202-1be670ee2b68.png)
 
-AWS RDS 에 Work bench 로 접속한 화면입니다.
+AWS RDS 에 MySQL Workbench 로 접속한 화면입니다.
 
 <!-- 리스트 뿌리기 -->
 ![image](https://user-images.githubusercontent.com/70655507/159130661-b3ddd4e1-fcca-449a-8256-44da5b9d0750.png)
 
 화면에 JSON 형태로 잘 뿌려지는 것이 보입니다.
+
+**Request Mapping**
+- 글목록 /posts
+- 글작성 /posts
+- 글상세 /posts/{id}
+- 글수정 /posts/{id}/edit 
+- 글삭제 /posts/{id}
+
+
+**PostController.java**
 
 ```java
     // 글상세
