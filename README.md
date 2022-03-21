@@ -36,16 +36,16 @@ Spring boot 와 REST API 를 활용하여 CRUD 를 설계 및 Docker & Travis �
 <!-- 깃허브 푸시 -->
 ![image](https://user-images.githubusercontent.com/70655507/159131185-fa4d0127-46f0-4d8a-8957-749c30e07233.png)
 
-깃허브에 푸시해 Travis CI 가 Docker 에 담아 AWS 에 자동배포를 하는지 확인해보겠습니다. 
+깃허브에 푸시해 Travis CI 가 Docker 를 이용해 AWS 에 자동배포를 하는지 확인해보겠습니다. 
 
 <!-- Travis 테스트 중 -->
 ![image](https://user-images.githubusercontent.com/70655507/159129871-3b907e24-b252-4164-952d-303745d39fa7.png)
 
-'Running for 5 sec' 라는 글자를 통해 Travis 가 프로젝트를 테스트하고 있습니다.
+'Running for 5 sec' 를 통해 Travis 가 프로젝트를 테스트하고 있는 것을 알 수 있습니다.
 
 아래는 테스트 로그를 보여주고 있습니다.
 
-깃허브를 푸시하면 Travis 가 .travis.yml 이라는 파일을 읽습니다.
+깃허브를 푸시하면 Travis 가 .travis.yml 이라는 파일을 읽고 테스트를 수행합니다.
 
 **.travis.yml**
 
@@ -82,7 +82,6 @@ deploy:
   secret_access_key: $AWS_SECRET_KEY
 ```
 
-Maven 을 설치하고 테스트하고
 - after_success: 도커허브에 로그인해 푸시합니다.
 - deploy: AWS 에 배포합니다.
 
@@ -142,13 +141,13 @@ ENTRYPOINT ["java", "-jar", "/app.jar"]
 <!-- AWS 배포 확인 -->
 ![image](https://user-images.githubusercontent.com/70655507/159130510-08c4474d-ae42-43a5-9cd9-e0965e004766.png)
 
-AWS 를 확인해보면 상태가 확인이 된 것이 보이며 
+AWS 를 확인해보면 초록색 체크표시로 배포가 잘 된 것을 확인할 수 있습니다.
 - 실행버전: Travis
 - 플랫폼: docker 
 
 가 보입니다.
 
-아래는 'Environment update completed successfully.' 로 환경이 성공적으로 업데이트된 것이 보입니다.
+아래는 'Environment update completed successfully.' 로 환경이 성공적으로 업데이트된 로그가 보입니다.
 
 <!-- MySQL 워크벤치 -->
 ![image](https://user-images.githubusercontent.com/70655507/159130558-a6ed727c-4b66-4cf1-a202-1be670ee2b68.png)
@@ -191,8 +190,14 @@ AWS RDS 에 MySQL Workbench 로 접속한 화면입니다.
 <!-- POST 버튼 -->
 ![image](https://user-images.githubusercontent.com/70655507/159130916-48eed968-53e9-46df-b5d1-3f4ef6e50203.png)
 
+이번엔 HAL 브라우저가 지원하는 POST 버튼으로 글 작성을 해보겠습니다.
+
 <!-- 글 작성 -->
 ![image](https://user-images.githubusercontent.com/70655507/159130952-3e9a687b-9476-4600-9d22-3c972d1df7ae.png)
+
+POST 는 body 에 값을 입력하므로 JSON 형태로 데이터를 넣어줍니다.
+
+id 와 postDate 는 자동으로 값이 들어가므로 제목, 내용, 작성자만 입력합니다.
 
 **Post.java**
 
@@ -216,6 +221,8 @@ public class Post {
 }
 ```
 
+`@EntityListeners(AuditingEntityListener.class)` 와 `@CreatedDate` 를 통해 Entitiy 가 생성되면 생성된 시간을 postDate 에 담습니다.
+
 **CrudApplication.java**
 
 ```java
@@ -228,16 +235,20 @@ public class CrudApplication {
 }
 ```
 
+`@EnableJpaAuditing` 을 통해 JPA Auditing 을 활성화합니다.
+
 <!-- 201 Created 상태반환 -->
 ![image](https://user-images.githubusercontent.com/70655507/159130973-4abe8614-1392-42be-86a9-18f7258b7891.png)
 
 <!-- 글 작성 완료 -->
 ![image](https://user-images.githubusercontent.com/70655507/159130989-448ffbcf-54dd-4c3b-b971-551660f2124c.png)
 
-글작성이 잘 된것을 볼 수 있습니다.
+글 작성이 잘 된 것을 볼 수 있습니다.
 
 <!-- 헤테오스 -->
 ![image](https://user-images.githubusercontent.com/70655507/159131029-9440074f-dd71-4259-b48e-1d23dd1b159a.png)
+
+HATEOAS 를 통해 링크를 담아줍니다.
 
 <!-- 글 삭제 -->
 ![image](https://user-images.githubusercontent.com/70655507/159131080-f5ec1461-2757-4378-90bd-bee735a6182d.png)
@@ -249,4 +260,4 @@ public class CrudApplication {
 
 107번의 글이 삭제되고 새글이 추가된 것을 볼 수 있습니다. 
 
-@GeneratedValue 에 의해 1번부터 생성되는데 두 번 테스트 후 3번이 작성되었습니다)
+> @GeneratedValue 에 의해 1번부터 생성되는데 두 번 테스트 후 3번이 작성되었습니다.
