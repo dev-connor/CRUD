@@ -9,7 +9,7 @@ spring:
   datasource:
     url: jdbc:mysql://guest-book.cjix2ohrkuio.ap-northeast-2.rds.amazonaws.com:3306/db?autoReconnect=true&serverTimezone=UTC
     username: admin
-    password: password
+    password: gg123456
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
