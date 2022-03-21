@@ -21,7 +21,7 @@ Spring boot 와 REST API 를 활용하여 CRUD 를 설계 및 Docker & Travis �
 
 
 <a href='http://guestbook-env.eba-dv75tdba.ap-northeast-2.elasticbeanstalk.com/explorer/index.html#uri=/' target='_blank'>
-http://guestbook-env.eba-dv75tdba.ap-northeast-2.elasticbeanstalk.com/explorer/index.html#uri=/
+링크
 </a>
 
 ---
