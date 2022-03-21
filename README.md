@@ -19,7 +19,11 @@ Spring boot 와 REST API 를 활용하여 CRUD 를 설계 및 Docker & Travis �
 - IDE: IntelliJ
 - 버전관리: Git & GitHub
 
+배포된 사이트
+
 http://guestbook-env.eba-dv75tdba.ap-northeast-2.elasticbeanstalk.com/explorer/index.html#uri=/
+
+> 새 페이지로 열기위해 Ctrl 을 누르고 클릭하세요!!
 
 ---
 목차
