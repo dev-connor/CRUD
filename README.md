@@ -9,15 +9,7 @@ Spring boot 와 REST API 를 활용하여 CRUD 를 설계 및 Docker & Travis �
 개발기간
 - 2022년 3월 14일 ~ 2022년 3월 21일 (일주일)
 
-개발
-- 스프링부트: 2.2.7.RELEASE
-- 빌드도구: Maven
-- 패키징: JAR
-- ORM: JPA
-- DBMS: MySQL (AWS 의 RDS)
-- DB툴: MySQL Workbench
-- IDE: IntelliJ
-- 버전관리: Git & GitHub
+
 
 **배포된 사이트**
 
@@ -28,7 +20,7 @@ http://guestbook-env.eba-dv75tdba.ap-northeast-2.elasticbeanstalk.com/explorer/i
 
 
 ---
-목차
+**목차**
 
 1. GitHub 에 push 했을 때 Travis CI 가 감지하여 Docker hub 에 저장하고 AWS 배포 자동화
     - GitHub 에 push
@@ -39,6 +31,16 @@ http://guestbook-env.eba-dv75tdba.ap-northeast-2.elasticbeanstalk.com/explorer/i
     - Read
     - Create
     - Delete
+
+**개발**
+- 스프링부트: 2.2.7.RELEASE
+- 빌드도구: Maven
+- 패키징: JAR
+- ORM: JPA
+- DBMS: MySQL (AWS 의 RDS)
+- DB툴: MySQL Workbench
+- IDE: IntelliJ
+- 버전관리: Git & GitHub
 ---
 
 <!-- 깃허브 푸시 -->
