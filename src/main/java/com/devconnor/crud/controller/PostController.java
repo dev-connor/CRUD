@@ -5,8 +5,10 @@ import com.devconnor.crud.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
@@ -43,8 +45,7 @@ public class PostController {
             WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).getPosts());
             model.add(linkTo.withRel("all-posts"));
             return model;
-        }
-        return null;
+        } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("%d 번째 글이 존재하지 않습니다.", id));
     }
 
     // 글삭제
