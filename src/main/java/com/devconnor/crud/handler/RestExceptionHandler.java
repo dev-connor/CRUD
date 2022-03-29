@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import javax.xml.ws.Response;
-
 @RestController
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
