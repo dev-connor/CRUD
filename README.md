@@ -170,12 +170,14 @@ AWS RDS 에 MySQL Workbench 로 접속한 화면입니다.
 화면에 JSON 형태로 잘 뿌려지는 것이 보입니다.
 
 **Request Mapping**
-- 글목록 /posts
-- 글작성 /posts
-- 글상세 /posts/{id}
-- 글수정 /posts/{id}/edit 
-- 글삭제 /posts/{id}
 
+- 글목록 /posts (GET)
+- 글작성 /posts (POST)
+- 글상세 /posts/{id} (GET)
+- 글수정 /posts/{id} (PUT)
+- 글삭제 /posts/{id} (DELETE)
+
+https://brainbackdoor.tistory.com/53
 
 **PostController.java**
 
